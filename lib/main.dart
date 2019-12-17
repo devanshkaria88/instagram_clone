@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Home Page.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,13 +15,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -43,15 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: TabBarView(
             children: <Widget>[
-              ListView(
-                children: <Widget>[
-                  Container(color: Colors.red, height: 20,width: 20,),
-                  Container(color: Colors.blue,height: 20,width: 20),
-                  Container(color: Colors.green,height: 20,width: 20),
-                  Container(color: Colors.pink,height: 20,width: 20),
-                  Container(color: Colors.yellow,height: 20,width: 20),
-                ],
-              ),
+              Homepage(),
               Container(color: Colors.yellow,),
               Container(color: Colors.blue,),
               Container(color: Colors.green,),
