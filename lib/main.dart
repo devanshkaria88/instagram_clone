@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Home Page.dart';
+import 'package:instagram_clone/Chats_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,47 +24,44 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 3,
+      initialIndex: 1,
       child: SafeArea(
         bottom: false,
         child: Scaffold(
           backgroundColor: Colors.black,
-          appBar: AppBar(
-            backgroundColor: Color(0xFF121212),
-            leading: Icon(Icons.camera_alt,),
-            title: Text('Instagram', style: GoogleFonts.satisfy(fontSize: 30.0, fontWeight: FontWeight.w100,),),
-            actions: <Widget>[
-              Icon(Icons.live_tv),
-              SizedBox(width: 12.0,),
-              Icon(Icons.near_me),
-              SizedBox(width: 15.0,),
-            ],
-            elevation: 10.0,
-          ),
           body: TabBarView(
             children: <Widget>[
-              Homepage(),
-              Container(color: Colors.yellow,),
-              Container(color: Colors.blue,),
               Container(color: Colors.green,),
-              Container(color: Colors.pink,),
+              Homepage(),
+              ChatsPage(),
             ],
           ),
-          bottomNavigationBar: TabBar(
-            tabs: <Tab>[
-              Tab(
+          bottomNavigationBar: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                backgroundColor: Color(0xFF121212),
+                title: Text(''),
                 icon: Icon(Icons.home),
               ),
-              Tab(
+              BottomNavigationBarItem(
+                  backgroundColor: Color(0xFF121212),
+                title: Text(''),
                 icon: Icon(Icons.search),
               ),
-              Tab(
+              BottomNavigationBarItem(
+                backgroundColor: Color(0xFF121212),
+                title: Text(''),
                 icon: Icon(Icons.add_box),
               ),
-              Tab(
+              BottomNavigationBarItem(
+                backgroundColor: Color(0xFF121212),
+                title: Text(''),
                 icon: Icon(Icons.alternate_email),
               ),
-              Tab(
+              BottomNavigationBarItem(
+                backgroundColor: Color(0xFF121212),
+                title: Text(''),
                 icon: Icon(Icons.account_circle),
               ),
             ],
