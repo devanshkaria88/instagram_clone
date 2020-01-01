@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Home Page.dart';
 import 'package:instagram_clone/Chats_page.dart';
+//import 'camera.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,40 +34,28 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.black,
           body: TabBarView(
             children: <Widget>[
-              Container(color: Colors.green,),
+              Container(color: Colors.green),
               Homepage(),
               ChatsPage(),
             ],
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                backgroundColor: Color(0xFF121212),
-                title: Text(''),
-                icon: Icon(Icons.home),
+          bottomNavigationBar: BottomAppBar(
+            color: Color(0xFF121212),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 3.0, top: 10.0, bottom: 10.0, right: 3.0),
+              child: Row(
+                verticalDirection: VerticalDirection.down,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Icon(CupertinoIcons.home, size: 35.0, color: Colors.white,),
+                  Icon(CupertinoIcons.search, size: 35.0, color: Colors.white,),
+                  Icon(Icons.add_box, size: 35.0, color: Colors.white,),
+                  Image.asset('images/heart.png', color: Colors.white, height: 40.0, width: 40.0,),
+                  Icon(Icons.account_circle, size: 35.0, color: Colors.white,),
+                ],
               ),
-              BottomNavigationBarItem(
-                  backgroundColor: Color(0xFF121212),
-                title: Text(''),
-                icon: Icon(Icons.search),
-              ),
-              BottomNavigationBarItem(
-                backgroundColor: Color(0xFF121212),
-                title: Text(''),
-                icon: Icon(Icons.add_box),
-              ),
-              BottomNavigationBarItem(
-                backgroundColor: Color(0xFF121212),
-                title: Text(''),
-                icon: Icon(Icons.alternate_email),
-              ),
-              BottomNavigationBarItem(
-                backgroundColor: Color(0xFF121212),
-                title: Text(''),
-                icon: Icon(Icons.account_circle),
-              ),
-            ],
-          ),
+            ),
+          )
         ),
       ),
     );

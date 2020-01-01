@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:instagram_clone/Home%20Page.dart';
 import 'chat_tile.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -9,6 +10,11 @@ class ChatsPage extends StatefulWidget {
 }
 
 class _ChatsPageState extends State<ChatsPage> {
+  void back() {
+    Navigator.of(context).push(CupertinoPageRoute(builder: (context) {return Homepage();}
+      ),
+    );
+  }
   List <Widget> _tiles = [
     DecoratedBox(
       decoration: BoxDecoration(
@@ -40,7 +46,7 @@ class _ChatsPageState extends State<ChatsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF121212),
-        leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,), onPressed: (){Navigator.pop(context);}),
+        leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,), onPressed: back),
         title: Title(color: Colors.white, child: Row(children: <Widget>[Text('user_name ' ), Icon(Icons.keyboard_arrow_down)],)),
         actions: <Widget>[
           Icon(Icons.videocam),

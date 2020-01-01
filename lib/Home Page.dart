@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'post.dart';
 import 'story.dart';
@@ -18,6 +19,9 @@ class _HomepageState extends State<Homepage> {
   ];
 
   void chatscreen() {
+    Navigator.of(context).push(CupertinoPageRoute(builder: (context) {return ChatsPage();}
+      ),
+    );
   }
 
   @override
@@ -25,12 +29,15 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF121212),
-        leading: Icon(Icons.camera_alt,),
+        leading: GestureDetector(child: Image.asset('images/camera.png', color: Colors.white, height: 20.0, width: 20.0,), onTap: (){},),
         title: Text('Instagram', style: GoogleFonts.satisfy(fontSize: 30.0, fontWeight: FontWeight.w100,),),
         actions: <Widget>[
-          Icon(Icons.live_tv),
+          Image.asset('images/igtv.png', color: Colors.white, height: 30.0, width: 30.0,),
           SizedBox(width: 12.0,),
-          IconButton(icon: Icon(Icons.near_me), onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => ChatsPage()));}),
+          GestureDetector(
+            onTap: chatscreen,
+              child: Image.asset('images/send.png',color: Colors.white, height: 27.0, width: 27.0,)
+          ),
           SizedBox(width: 15.0,),
         ],
         elevation: 10.0,
