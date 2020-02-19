@@ -1,9 +1,13 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instagram_clone/Chats_page.dart';
 
+import 'camera.dart';
 import 'post.dart';
+
+List<CameraDescription> cameras;
 
 class Homepage extends StatefulWidget {
   @override
@@ -38,11 +42,19 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF121212),
-        leading: Image.asset(
-          'images/camera.png',
-          height: 30.0,
-          width: 30.0,
-          color: Colors.white,
+        leading: GestureDetector(
+          onTap: () async {
+            cameras = await availableCameras();
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return camerascreen(cameras);
+            }));
+          },
+          child: Image.asset(
+            'images/camera.png',
+            height: 30.0,
+            width: 30.0,
+            color: Colors.white,
+          ),
         ),
         title: Text(
           'Instagram',

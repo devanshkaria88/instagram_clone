@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:instagram_clone/Chats_page.dart';
+import 'package:instagram_clone/camera.dart';
 
 import 'home_page.dart';
-//import 'camera.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Colors.black,
             body: TabBarView(
               children: <Widget>[
-                Container(color: Colors.green),
+                camerascreen(cameras),
                 Homepage(),
                 ChatsPage(),
               ],
