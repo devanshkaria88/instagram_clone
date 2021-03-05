@@ -42,10 +42,16 @@ class _camerascreenState extends State<camerascreen> {
         children: <Widget>[
           CameraPreview(controller),
           Positioned(
-            child: FloatingActionButton(
-              onPressed: () {
-              },
-              elevation: 25.0,
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  shape: BoxShape.circle),
+              padding: EdgeInsets.all(3),
+              child: FloatingActionButton(
+                backgroundColor: Colors.white,
+                onPressed: () {},
+                elevation: 25.0,
+              ),
             ),
             top: MediaQuery.of(context).size.height - 150.0,
             left: MediaQuery.of(context).size.width * 0.5 - 25.0,

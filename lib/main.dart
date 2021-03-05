@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_clone/Chats_page.dart';
 import 'package:instagram_clone/camera.dart';
 
@@ -50,29 +51,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Icon(
-                      CupertinoIcons.home,
-                      size: 35.0,
+                      Icons.home,
+                      size: 30.0,
                       color: Colors.white,
                     ),
                     Icon(
                       CupertinoIcons.search,
-                      size: 35.0,
+                      size: 30.0,
                       color: Colors.white,
                     ),
                     Icon(
-                      Icons.add_box,
-                      size: 35.0,
+                      Icons.video_collection,
+                      size: 30.0,
                       color: Colors.white,
                     ),
-                    Image.asset(
-                      'images/heart.png',
+                    Icon(
+                      FontAwesomeIcons.heart,
                       color: Colors.white,
-                      height: 40.0,
-                      width: 40.0,
                     ),
                     Icon(
                       Icons.account_circle,
-                      size: 35.0,
+                      size: 30.0,
                       color: Colors.white,
                     ),
                   ],
