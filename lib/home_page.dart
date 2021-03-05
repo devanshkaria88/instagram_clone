@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instagram_clone/Chats_page.dart';
+import 'package:instagram_clone/Widget/StoryWidgets.dart';
+import 'package:instagram_clone/post.dart';
 
 import 'camera.dart';
-import 'post.dart';
 
 List<CameraDescription> cameras;
 
@@ -43,6 +44,7 @@ class _HomepageState extends State<Homepage> {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: PreferredSize(
         preferredSize: Size(w, 52),
         child: AppBar(
@@ -95,19 +97,24 @@ class _HomepageState extends State<Homepage> {
           elevation: 10.0,
         ),
       ),
-      body: Container(
-        color: Colors.black,
-        child: ListView(
-          children: getlist(),
-        ),
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 10.0),
+            child: StoryWidgets(),
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 7.0, vertical: 10),
+              child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, v) {
+                    return PostCard();
+                  }),
+            ),
+          )
+        ],
       ),
     );
-  }
-
-  List<Widget> getlist() {
-    for (int i = 0; i < 20; i++) {
-      posts.add(PostCard(num: i));
-    }
-    return posts;
   }
 }

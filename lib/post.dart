@@ -1,82 +1,145 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PostCard extends StatefulWidget {
-  PostCard({@required this.num});
-  final int num;
-
-
   @override
   _PostCardState createState() => _PostCardState();
 }
 
 class _PostCardState extends State<PostCard> {
-
-  int likes = 59;
-  Image likedheart = Image.asset('images/liked_heart.png', height: 25.0, width: 32.0,);
-  Image plainheart = Image.asset('images/heart.png',color: Colors.white, height: 40.0, width: 40.0,);
-  Image likestate = Image.asset('images/heart.png',color: Colors.white, height: 40.0, width: 40.0,);
-
-
-  void like() {
-    setState(() {
-      likestate = likedheart;
-      likes++;
-    });
-  }
-
-  void dislike ()
-  {
-    setState(() {
-      likestate = plainheart;
-      likes--;
-    });
-  }
-
-  void doublecheck(){
-    if(likestate == plainheart){
-      like();
-    }
-  }
-
-  void checkLike () {
-    if(likestate == likedheart){
-      dislike();
-    }
-    else{
-      like();
-    }
-  }
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              CircleAvatar(backgroundColor: Colors.red,),
-              SizedBox(width: 5.0,),
-              Text('user_name', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),),
-            ],
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 20.0,
+                      backgroundColor: Colors.red,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "jeel",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          "Rajkot Gujrat",
+                          style: TextStyle(color: Colors.white, fontSize: 11.0),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Icon(
+                  Icons.more_vert,
+                  color: Colors.white,
+                  size: 20,
+                )
+              ],
+            ),
           ),
-          SizedBox(height: 7.0,),
-          GestureDetector(onDoubleTap: doublecheck, child: Image.asset('images/${widget.num}.jpg', width: MediaQuery.of(context).size.width,),),
-          SizedBox(height: 7.0,),
-          Row(children: <Widget>[
-            GestureDetector(child: likestate, onTap: checkLike),
-            Image.asset('images/comment.png', color: Colors.white, height: 40.0, width: 40.0,),
-            Image.asset('images/send.png',color: Colors.white, height: 30.0, width: 40.0,),
-            SizedBox(width: MediaQuery.of(context).size.width-180,),
-            Image.asset('images/bookmark.png',color: Colors.white, height: 40.0, width: 40.0,),
-          ],),
-          Text('$likes likes', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),),
-          Row(children: <Widget>[ Text('user_name', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),), Text('great')],),
-          Text('view all 57 comments', style: TextStyle(color: Colors.grey),),
-          Row(children: <Widget>[CircleAvatar(), SizedBox(width: 5.0,), Text('Add a Comment...', style: TextStyle(color: Colors.grey),)],),
-          Text('1 hour ago', style: TextStyle(color: Colors.grey,),)
+          Divider(
+            height: h * 0.007,
+            color: Colors.grey,
+          ),
+          Container(
+            height: h * 0.4,
+            color: Colors.blue,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: w * 0.25,
+                  height: h * 0.06,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.heart,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        CupertinoIcons.search,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        FontAwesomeIcons.paperPlane,
+                        size: 20,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                ),
+                Icon(
+                  FontAwesomeIcons.bookmark,
+                  color: Colors.white,
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
+              children: [
+                Text(
+                  "1,039",
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  " likes",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            height: h * 0.1,
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Text(
+              "User_name World's first smartphone with 19GB Ram launched.",
+              maxLines: 2,
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(),
+          ),
         ],
       ),
     );
