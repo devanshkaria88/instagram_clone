@@ -25,7 +25,14 @@ class _PostCardState extends State<PostCard> {
                   children: [
                     CircleAvatar(
                       radius: 20.0,
-                      backgroundColor: Colors.red,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(
+                          "https://wallpapercave.com/wp/wp4540682.jpg",
+                          width: 80,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                     SizedBox(
                       width: 10,

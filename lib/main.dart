@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:instagram_clone/Chats_page.dart';
 import 'package:instagram_clone/camera.dart';
@@ -60,9 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       size: 30.0,
                       color: Colors.white,
                     ),
-                    Icon(
-                      Icons.video_collection,
-                      size: 30.0,
+                    SvgPicture.asset(
+                      "assets/icon/instagram-reels.svg",
+                      height: 25,
+                      width: 25,
                       color: Colors.white,
                     ),
                     Icon(

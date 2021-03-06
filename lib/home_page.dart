@@ -1,8 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:instagram_clone/Chats_page.dart';
 import 'package:instagram_clone/Widget/StoryWidgets.dart';
 import 'package:instagram_clone/post.dart';
@@ -73,12 +73,15 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
           ),
-          title: Text(
-            'Instagram',
-            style: GoogleFonts.satisfy(
-              fontSize: 30.0,
-              fontWeight: FontWeight.w100,
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                "assets/icon/instagram.svg",
+                width: w * 0.3,
+                color: Colors.white,
+              ),
+            ],
           ),
           actions: <Widget>[
             SizedBox(
