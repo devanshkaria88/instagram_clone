@@ -1,13 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PostCard extends StatefulWidget {
-  @override
-  _PostCardState createState() => _PostCardState();
-}
+class PostCard extends StatelessWidget {
+  final String userName;
+  final String userImage;
+  final String location;
+  final String postImage;
+  final String totalLikes;
+  final String caption;
 
-class _PostCardState extends State<PostCard> {
+  PostCard(
+      {@required this.userName,
+      @required this.postImage,
+      @required this.totalLikes,
+      this.userImage,
+      this.location,
+      this.caption});
+
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -24,12 +35,14 @@ class _PostCardState extends State<PostCard> {
                 Row(
                   children: [
                     CircleAvatar(
+                      backgroundColor: Colors.transparent,
                       radius: 20.0,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
-                          "https://wallpapercave.com/wp/wp4540682.jpg",
+                          "$userImage",
                           width: 80,
+                          height: 80,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -41,7 +54,7 @@ class _PostCardState extends State<PostCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "jeel",
+                          "$userName",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -51,7 +64,7 @@ class _PostCardState extends State<PostCard> {
                           height: 3,
                         ),
                         Text(
-                          "Rajkot Gujrat",
+                          "$location",
                           style: TextStyle(color: Colors.white, fontSize: 11.0),
                         ),
                       ],
@@ -66,13 +79,18 @@ class _PostCardState extends State<PostCard> {
               ],
             ),
           ),
-          Divider(
-            height: h * 0.007,
-            color: Colors.grey,
+          SizedBox(
+            height: 10,
           ),
           Container(
             height: h * 0.4,
-            color: Colors.blue,
+            width: w * 1,
+            child: Center(
+              child: Image.network(
+                "$postImage",
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
           SizedBox(
             height: 10,
@@ -83,7 +101,7 @@ class _PostCardState extends State<PostCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: w * 0.25,
+                  width: w * 0.3,
                   height: h * 0.06,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,23 +109,28 @@ class _PostCardState extends State<PostCard> {
                       Icon(
                         FontAwesomeIcons.heart,
                         color: Colors.white,
+                        size: 25,
                       ),
                       Icon(
-                        CupertinoIcons.search,
+                        FontAwesomeIcons.comment,
+                        size: 25,
                         color: Colors.white,
                       ),
-                      Icon(
-                        FontAwesomeIcons.paperPlane,
-                        size: 20,
+                      SvgPicture.asset(
+                        "assets/icon/send.svg",
+                        height: 23,
+                        width: 23,
+                        fit: BoxFit.cover,
                         color: Colors.white,
-                      )
+                      ),
                     ],
                   ),
                 ),
                 Icon(
                   FontAwesomeIcons.bookmark,
                   color: Colors.white,
-                )
+                  size: 25,
+                ),
               ],
             ),
           ),
@@ -119,7 +142,7 @@ class _PostCardState extends State<PostCard> {
             child: Row(
               children: [
                 Text(
-                  "1,039",
+                  "$totalLikes",
                   style: TextStyle(color: Colors.white),
                 ),
                 Text(
@@ -136,7 +159,7 @@ class _PostCardState extends State<PostCard> {
             height: h * 0.1,
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
-              "User_name World's first smartphone with 19GB Ram launched.",
+              "$caption",
               maxLines: 2,
               style: TextStyle(color: Colors.white),
             ),
