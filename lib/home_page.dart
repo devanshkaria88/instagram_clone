@@ -46,7 +46,7 @@ class _HomepageState extends State<Homepage> {
       "post_image": "https://wallpapercave.com/wp/wp4540707.jpg",
       "likes": '10M',
       "location": "Rajkot Gujarat",
-      "caption": "No Caption"
+      "caption": "If you were looking for a sign, here it is."
     },
     {
       "user_name": "KD Chavda",
@@ -55,7 +55,8 @@ class _HomepageState extends State<Homepage> {
       "post_image": "https://wallpapercave.com/wp/wp3350815.jpg",
       "likes": '10,000',
       "location": "Junagadh Gujarat",
-      "caption": "No Caption"
+      "caption":
+          "Remember that happiness is a way of travel – not a destination."
     },
     {
       "user_name": "Mark",
@@ -64,7 +65,7 @@ class _HomepageState extends State<Homepage> {
       "post_image": "https://wallpapercave.com/wp/wp4540685.jpg",
       "likes": '10,000',
       "location": "Africa",
-      "caption": "No Caption"
+      "caption": "Be yourself, there's no one better"
     },
     {
       "user_name": "John",
