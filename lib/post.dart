@@ -1,9 +1,10 @@
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   final String userName;
   final String userImage;
   final String location;
@@ -18,6 +19,14 @@ class PostCard extends StatelessWidget {
       this.userImage,
       this.location,
       this.caption});
+
+  @override
+  _PostCardState createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  bool liked = false;
+  final FlareControls flareControls = FlareControls();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +49,7 @@ class PostCard extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
-                          "$userImage",
+                          "${widget.userImage}",
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover,
@@ -54,7 +63,7 @@ class PostCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "$userName",
+                          "${widget.userName}",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -64,7 +73,7 @@ class PostCard extends StatelessWidget {
                           height: 3,
                         ),
                         Text(
-                          "$location",
+                          "${widget.location}",
                           style: TextStyle(color: Colors.white, fontSize: 11.0),
                         ),
                       ],
@@ -86,9 +95,37 @@ class PostCard extends StatelessWidget {
             height: h * 0.4,
             width: w * 1,
             child: Center(
-              child: Image.network(
-                "$postImage",
-                fit: BoxFit.fill,
+              child: GestureDetector(
+                onDoubleTap: () {
+                  setState(() {
+                    liked = true;
+                  });
+                  flareControls.play("like");
+                },
+                child: Stack(
+                  children: [
+                    Image.network(
+                      "${widget.postImage}",
+                      width: w,
+                      fit: BoxFit.contain,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      child: Center(
+                        child: SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: FlareActor(
+                            'assets/icon/instagram_like.flr',
+                            controller: flareControls,
+                            animation: 'idle',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -106,22 +143,36 @@ class PostCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
-                        FontAwesomeIcons.heart,
-                        color: Colors.white,
-                        size: 25,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            liked = !liked;
+                          });
+                        },
+                        child: liked == true
+                            ? Icon(
+                                FontAwesomeIcons.solidHeart,
+                                size: 25,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                FontAwesomeIcons.heart,
+                                size: 25,
+                                color: Colors.white,
+                              ),
                       ),
                       Icon(
                         FontAwesomeIcons.comment,
                         size: 25,
                         color: Colors.white,
                       ),
-                      SvgPicture.asset(
-                        "assets/icon/send.svg",
-                        height: 23,
-                        width: 23,
-                        fit: BoxFit.cover,
-                        color: Colors.white,
+                      Transform.rotate(
+                        angle: 3.14 * 1 / 12,
+                        child: Icon(
+                          CupertinoIcons.paperplane,
+                          color: Colors.white,
+                          size: 24,
+                        ),
                       ),
                     ],
                   ),
@@ -142,7 +193,7 @@ class PostCard extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "$totalLikes",
+                  "${widget.totalLikes}",
                   style: TextStyle(color: Colors.white),
                 ),
                 Text(
@@ -159,7 +210,7 @@ class PostCard extends StatelessWidget {
             height: h * 0.1,
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
-              "$caption",
+              "${widget.caption}",
               maxLines: 2,
               style: TextStyle(color: Colors.white),
             ),

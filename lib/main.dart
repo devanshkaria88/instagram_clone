@@ -39,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
             backgroundColor: Colors.black,
             body: TabBarView(
+              physics: AlwaysScrollableScrollPhysics(),
               children: <Widget>[
                 camerascreen(cameras),
                 Homepage(),
