@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/Widget/ChatScreen.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -163,43 +164,56 @@ class _ChatPageState extends State<ChatPage> {
                           SizedBox(
                             width: 10,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                userName[i],
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 15),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Row(
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChatScreen()));
+                            },
+                            child: Container(
+                              color: Colors.black,
+                              width: w * 0.55,
+                              padding: EdgeInsets.only(right: 40),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    messages[i],
+                                    userName[i],
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
+                                        color: Colors.white, fontSize: 15),
                                   ),
                                   SizedBox(
-                                    width: 6,
+                                    height: 3,
                                   ),
-                                  CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    radius: 1,
+                                  Row(
+                                    children: [
+                                      Text(
+                                        messages[i],
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 12),
+                                      ),
+                                      SizedBox(
+                                        width: 6,
+                                      ),
+                                      CircleAvatar(
+                                        backgroundColor: Colors.white,
+                                        radius: 1,
+                                      ),
+                                      Text(
+                                        " 1 h",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 13),
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    " 1 h",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 13),
-                                  )
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                 ],
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                            ],
+                            ),
                           ),
                           Expanded(
                             child: Column(
