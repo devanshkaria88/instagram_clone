@@ -90,9 +90,12 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.arrow_back_sharp,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Icon(
+                      Icons.arrow_back_sharp,
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: 20,
